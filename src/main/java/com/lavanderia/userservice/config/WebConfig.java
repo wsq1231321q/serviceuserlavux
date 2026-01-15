@@ -1,4 +1,5 @@
 package com.lavanderia.userservice.config;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
@@ -13,10 +14,11 @@ public class WebConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOriginPatterns("*")   // 🔥 NO allowedOrigins
+                        .allowedOriginPatterns("https://*") // HTTPS obligatorio
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
                         .exposedHeaders("*")
+                        .allowCredentials(true)
                         .maxAge(3600);
             }
         };
